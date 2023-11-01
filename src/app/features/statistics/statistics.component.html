@@ -1,0 +1,30 @@
+<div class="statistics">
+  <div class="chart">
+    <ng-container *ngIf="isLoadig['balcony']">
+      <ng-container *ngTemplateOutlet="loader"></ng-container>
+    </ng-container>
+    <iframe src="http://localhost:3200/d-solo/fvB7RrpVk/data?orgId=1&panelId=2"
+      frameborder="0"
+      (load)="onLoad('balcony')"
+      [ngClass]="{ loading: isLoadig['balcony'] }"
+    ></iframe>
+  </div>
+
+  <div class="chart">
+    <ng-container *ngIf="isLoadig['capacity']">
+      <ng-container *ngTemplateOutlet="loader"></ng-container>
+    </ng-container>
+    <iframe 
+      src="http://localhost:3200/d-solo/fvB7RrpVk/data?orgId=1&panelId=4"
+      frameborder="0"
+      (load)="onLoad('capacity')"
+      [ngClass]="{ loading: isLoadig['balcony'] }"
+    ></iframe>
+  </div>
+</div>
+
+<ng-template #loader>
+  <div class="loader">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

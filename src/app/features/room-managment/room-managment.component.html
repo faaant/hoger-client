@@ -1,0 +1,14 @@
+<div class="room-managment">
+  <div class="table">
+    <app-grid
+      [data]="data"
+      [columns]="columns"
+      [availableGridActions]="availableGridActions"
+      [filters]="filters"
+      [filterForm]="filterForm"
+      (gridRefresh)="refreshGrid()"
+      (filterData)="filterRooms($event)"
+      (rowAction)="rowAction($event)"
+    ></app-grid>
+  </div>
+</div>

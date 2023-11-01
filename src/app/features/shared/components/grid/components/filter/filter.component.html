@@ -1,0 +1,47 @@
+<div class="filter-container" [formGroup]="form">
+  <ng-container [ngSwitch]="filter.fieldType">
+    <div *ngSwitchCase="'number'" class="filter">
+      <div class="display-name">{{ filter.displayName }}</div>
+      <mat-form-field appearance="fill" class="symbol-select">
+        <mat-select formControlName="comparisonNumberSymbol">
+          <mat-option value="not selected"></mat-option>
+          <mat-option value="equal"> = </mat-option>
+          <mat-option value="greater"> > </mat-option>
+          <mat-option value="lower"> < </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="value-input">
+        <mat-label>Value</mat-label>
+        <input
+          matInput
+          placeholder="Placeholder"
+          type="number"
+          formControlName="comparisonValue"
+        />
+      </mat-form-field>
+    </div>
+    <div *ngSwitchCase="'boolean'" class="filter">
+      <div class="display-name">{{ filter.displayName }}</div>
+      <mat-form-field appearance="fill" class="bool-select">
+        <mat-select formControlName="comparisonValue">
+          <mat-option value=""></mat-option>
+          <mat-option value="true"> true </mat-option>
+          <mat-option value="false"> false </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div *ngSwitchCase="'string'" class="filter">
+      <div class="display-name">{{ filter.displayName }}</div>
+      <div class="contains">contains</div>
+      <mat-form-field appearance="fill" class="value-input">
+        <mat-label>Value</mat-label>
+        <input
+          matInput
+          placeholder="Placeholder"
+          type="text"
+          formControlName="comparisonValue"
+        />
+      </mat-form-field>
+    </div>
+  </ng-container>
+</div>

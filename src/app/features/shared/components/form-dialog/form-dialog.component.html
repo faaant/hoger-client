@@ -1,0 +1,32 @@
+<form [formGroup]="form">
+  <div *ngFor="let field of data.formFields">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ field.displayName }}</mat-label>
+      <ng-container [ngSwitch]="field.type">
+        <mat-select *ngSwitchCase="'select'" [formControlName]="field.field">
+          <mat-option value="Cleaner"> Cleaner </mat-option>
+          <mat-option value="Receptionist"> Receptionist </mat-option>
+        </mat-select>
+        <input
+          matInput
+          [type]="field.type"
+          *ngSwitchDefault
+          [formControlName]="field.field"
+        />
+      </ng-container>
+    </mat-form-field>
+  </div>
+  <div class="err-msg">
+    <span *ngIf="errorVisibility">Not all required fields are filled!</span>
+  </div>
+
+  <div mat-dialog-actions class="controls">
+    <button
+      mat-button
+      (click)="closeDialog($event)"
+      *ngFor="let control of data.controls"
+    >
+      {{ control }}
+    </button>
+  </div>
+</form>

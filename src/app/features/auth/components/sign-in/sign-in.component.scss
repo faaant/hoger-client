@@ -1,0 +1,87 @@
+@import '/src/scss/variables';
+
+.sign-in {
+    display: flex;
+    position: relative;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: url('/assets/skyscrape.svg') no-repeat 15em 2em, linear-gradient(to top, $sign-in-bottom-gradient-color, $sign-in-top-gradient-color);
+    background-size: cover;
+    .moon {
+        position: absolute;
+        top: 2%;
+        left: 5%;
+        border-radius: 50%;
+        background: radial-gradient(circle at 60% 60%, $moon-gradient-center-color 33%, $moon-gradient-outside-circle-color 95%);
+        box-shadow: 0 0 50px white;
+        height: 5em;
+        width: 5em;
+    }
+    form {
+        width: 40%;
+        mat-card {
+            padding: 3em 0.5em;
+            mat-card-header {
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 3em;
+                mat-card-title {
+                    font-size: 30px;
+                }
+            }
+
+            mat-form-field {
+                width: 90%;
+                margin: 0 auto;
+                padding: 0.5em;
+            }
+
+            mat-card-footer {
+                display: flex;
+                margin-top: 0.5em;
+                justify-content: center;
+
+                button {
+                    background-color: $sign-in-button-color;
+                    height: 4em;
+                    width: 30%;
+                }
+            }
+        }
+    }
+}
+
+.err-msg {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: red;
+    font-size: 12px;
+    height: 30px;
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    .sign-in {
+        form {
+            width: 60%;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .sign-in {
+        form {
+            width: 95%;
+            mat-card {
+                mat-card-footer {
+                    button {
+                        width: 60%;
+                    }
+                }
+            }
+        }
+    }
+}

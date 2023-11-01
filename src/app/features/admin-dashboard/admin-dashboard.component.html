@@ -1,0 +1,15 @@
+<div class="dashboard">
+  <ng-container *ngFor="let item of data">
+    <a
+      *ngIf="checkPosition(item.positions, userInfo?.position)"
+      [routerLink]="item.route"
+    >
+      <mat-card class="dashboard-item">
+        <div class="photo">
+          <img mat-card-image [src]="item.img" [alt]="item.name" />
+        </div>
+        <div class="text">{{ item.name }}</div>
+      </mat-card>
+    </a>
+  </ng-container>
+</div>

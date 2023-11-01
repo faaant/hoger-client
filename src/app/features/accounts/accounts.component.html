@@ -1,0 +1,12 @@
+<div class="accounts">
+  <div class="table">
+    <app-grid
+      [data]="data"
+      [columns]="columns"
+      [availableGridActions]="availableGridActions"
+      (rowCreate)="createRow()"
+      (gridRefresh)="refreshGrid()"
+      (rowAction)="rowAction($event)"
+    ></app-grid>
+  </div>
+</div>

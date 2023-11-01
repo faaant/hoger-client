@@ -1,0 +1,89 @@
+@import "/src/scss/variables";
+
+.row {
+    display: grid;
+    min-height: 100%;
+    grid-auto-columns: minmax(3em,1fr);
+    grid-auto-flow: column;
+    border-bottom: solid $grid-row-border-color 1px;
+    .column-name {
+        font-weight: bold;
+        background-color: $grid-column-names-bg-color;
+        color: $grid-row-controls-text-color;
+        &:not(:last-child) {
+            border-right: solid $grid-2n-column-color 1px;
+        } 
+    }
+}
+
+.column-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background-color: $grid-odd-column-color;
+    &:nth-child(2n) {
+        background-color: $grid-2n-column-color;
+    }
+
+    .control-button {
+        height: 30px;
+        width: 50%;
+        padding: 0;
+        background-color: $grid-row-controls-bg-color;
+        color: $grid-row-controls-text-color;
+    }
+}
+
+
+.row-controls {
+    border-left: solid red 1px;
+}
+
+@media (max-width: 740px) {
+    .row {
+        font-size: 0.7em;
+        .column-name {
+            font-weight: 600;
+        }
+    }
+
+    .column-data {
+        .control-button {
+            min-width: 0px;
+            font-size: 0.8em;
+            word-break: break-word;
+        }
+    }
+}
+
+@media (max-width: 620px) {
+    .column-data {
+        .control-button {
+            font-size: 0.6em;
+        }
+    }
+}
+
+@media (max-width: 540px) {
+    .row {
+        .column-name {
+            font-weight: 600;
+            font-size: 0.7em;
+        }
+    }
+
+    .column-data {
+        .control-button {
+            font-size: 0.2em;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .row {
+        .column-name {
+            font-size: 0.5em;
+        }
+    }
+}

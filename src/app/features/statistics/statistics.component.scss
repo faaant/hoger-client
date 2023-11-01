@@ -1,0 +1,64 @@
+@import 'src/scss/variables';
+
+.statistics {
+    padding: 40px;
+    min-height: calc(100vh - 95px);
+    background-color: $bg-color-under-table;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(400px, auto);
+    justify-content: space-around;
+}
+
+.chart {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 10px 0;
+    iframe {
+        width: 600px;
+        height: 400px;
+    }
+    :not(:last-child) {
+        .loader {
+            height: 400px;
+            width: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.loading {
+    position: absolute;
+    visibility: hidden;
+}
+
+@media (max-width: 1400px) {
+    .statistics {
+        display: block;
+    }
+}
+
+@media (max-width: 700px) {
+    .chart {
+        iframe {
+            width: 400px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .chart {
+        iframe {
+            width: 250px;
+        }
+    }
+}
+
+@media (max-width: 340px) {
+    .statistics {
+        padding: 0;
+    }
+}

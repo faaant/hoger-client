@@ -1,0 +1,95 @@
+@import "/src/scss/variables";
+@import "/src/scss/mixins";
+
+.grid {
+    height: 100%;
+    background-color: $grid-bg-color;
+    border-radius: 20px;
+}
+
+.grid-menu {
+    border-bottom: solid $grid-controls-menu-border-color 1px;
+
+    input[type=checkbox] {
+        display: none;
+    }
+    
+    input:checked ~ .filters-wrapper {
+        display: block;
+    }
+}
+
+.filters-wrapper {
+    display: none;
+    padding-bottom: 20px;
+}
+
+.filter-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+        height: 50px;
+        width: 150px;
+        border-radius: 0px;
+        background-color: $grid-row-controls-bg-color;
+        color: $grid-row-controls-text-color;
+    }
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: minmax(200px, 350px) minmax(200px, 350px) minmax(200px, 350px);
+    grid-auto-rows: minmax(80px,auto);
+    padding: 0.2em;
+    justify-content: center;
+}
+
+.controls {
+    display: flex;
+    border-bottom: solid $grid-controls-border-color 1px;
+    button {
+        border: none;
+        min-height: 40px;
+        border-right: solid $grid-controls-border-color 1px;
+        border-radius: 0px;
+        &:first-child {
+            border-top-left-radius: 20px;
+        }
+    }
+
+    label {
+        display: inline-flex;
+        align-items: center;
+        img {
+            height: 35px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        padding-left: 0.5em;
+    }
+}
+
+.data-table {
+    display: grid;
+    grid-template-rows: minmax(4em, auto);
+    grid-auto-rows: minmax(3em,auto);
+    padding: 1em;
+}
+
+.loader {
+    @include loader;
+}
+
+@media (max-width: 1200px) {
+    .filters {
+        grid-template-columns: minmax(200px, 350px) minmax(200px, 350px);
+    }
+}
+
+@media (max-width: 700px) {
+    .filters {
+        grid-template-columns: minmax(200px, 350px);
+    }
+}

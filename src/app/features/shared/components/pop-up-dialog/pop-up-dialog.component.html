@@ -1,0 +1,27 @@
+<div class="pop-up">
+  <div class="error" *ngIf="!data.status">
+    <div class="line"></div>
+    <div class="img">
+      <img src="/assets/error.svg" alt="error" />
+    </div>
+    <div class="messages">
+      <span>Error</span>
+      <div class="message" *ngFor="let message of data.messages">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+
+  <div class="ok" *ngIf="data.status">
+    <div class="line"></div>
+    <div class="img">
+      <img src="/assets/ok.svg" alt="error" />
+    </div>
+    <div class="messages">
+      <span>Success</span>
+      <div class="message" *ngFor="let message of data.messages">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+</div>

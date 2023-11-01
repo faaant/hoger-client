@@ -1,0 +1,32 @@
+<ng-container *ngIf="columnNames; else simpleRow">
+  <div class="row">
+    <div class="column-data column-name" *ngFor="let column of columnNames">
+      {{ column }}
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #simpleRow>
+  <div class="row">
+    <ng-container *ngFor="let item of rowData | keyvalue : originalOrder">
+      <div class="column-data" [ngSwitch]="item.key">
+        <ng-container *ngSwitchCase="'controls'">
+          <ng-container *ngFor="let val of item.value | toStringArray">
+            <button
+              mat-stroked-button
+              *ngIf="val.length"
+              class="control-button"
+              (click)="rowControlClick(val)"
+            >
+              {{ val }}
+            </button>
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngSwitchDefault>
+          {{ item.value }}
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>

@@ -1,0 +1,15 @@
+@import './variables.scss';
+
+@mixin table {
+    width: 90%;
+    margin: 0 auto;
+    background-color: $table-bg-color;
+    border-radius: 20px;
+}
+
+@mixin loader {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

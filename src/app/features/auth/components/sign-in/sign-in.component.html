@@ -1,0 +1,24 @@
+<div class="sign-in">
+  <div class="moon"></div>
+  <form [formGroup]="form">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Sign In</mat-card-title>
+      </mat-card-header>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+      <div class="err-msg">
+        <span *ngIf="errorVisibility">Not all required fields are filled!</span>
+      </div>
+      <mat-card-footer>
+        <button mat-stroked-button (click)="signIn($event)">Sign In</button>
+      </mat-card-footer>
+    </mat-card>
+  </form>
+</div>

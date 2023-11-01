@@ -1,0 +1,58 @@
+<div class="grid">
+  <div class="grid-menu">
+    <input
+      type="checkbox"
+      *ngIf="availableGridActions?.filter"
+      id="filters"
+      #gridFilters
+    />
+    <div class="controls">
+      <button
+        *ngIf="availableGridActions?.create"
+        mat-stroked-button
+        (click)="gridControlClick(actions.Create)"
+      >
+        Create
+      </button>
+      <button
+        *ngIf="availableGridActions?.refresh"
+        mat-stroked-button
+        (click)="gridControlClick(actions.Refresh)"
+      >
+        Refresh
+      </button>
+      <label for="filters" *ngIf="availableGridActions?.filter">
+        <img src="/assets/filter.svg" alt="filter icon" />
+      </label>
+    </div>
+    <div class="filters-wrapper">
+      <form class="filters" [formGroup]="filterForm">
+        <app-filter
+          *ngFor="let filter of filters"
+          [filter]="filter"
+          [filterForm]="filterForm"
+        ></app-filter>
+      </form>
+      <div class="filter-button">
+        <button mat-stroked-button (click)="filter()">Filter</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-table">
+    <app-grid-row [columnNames]="columns"></app-grid-row>
+    <ng-container *ngIf="data; else loader">
+      <app-grid-row
+        *ngFor="let row of data"
+        [rowData]="row"
+        (rowAction)="rowControllersAction($event)"
+      ></app-grid-row>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #loader>
+  <div class="loader">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

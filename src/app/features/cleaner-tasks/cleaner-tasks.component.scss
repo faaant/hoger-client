@@ -1,0 +1,105 @@
+@import 'src/scss/variables';
+@import 'src/scss/mixins';
+
+.cleaner-tasks {
+    min-height: 100%;
+    padding: 2em;
+    background-color: $bg-color-under-table;
+    .loader {
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.table {
+    @include table;    
+}
+
+.controls {
+    display: flex;
+    border-bottom: solid $grid-controls-border-color 1px;
+    button {
+        border: none;
+        min-height: 40px;
+        border-right: solid $grid-controls-border-color 1px;
+        border-radius: 0px;
+        &:first-child {
+            border-top-left-radius: 20px;
+        }
+    }
+}
+
+.tasks {
+    padding: 2em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task {
+    display: grid;
+    grid-template-columns: minmax(200px, auto) 1fr minmax(150px, auto);
+    min-height: 80px;
+    width: 100%;
+    background-color: $grid-odd-column-color;
+    margin-bottom: 1em;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    border-radius: 5px;
+}
+
+.cleaner-id {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    height: 100%;
+}
+
+.label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.task-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+        background-color: $grid-row-controls-bg-color;
+        color: $grid-row-controls-text-color;
+    }   
+}
+
+@media (max-width:540px) {
+    .task {
+        grid-template-columns: minmax(150px, auto) 1fr minmax(150px, auto);
+        .task-controls {
+            button {
+                height: 2em;
+            }   
+        }
+        .label {
+            font-size: 0.95em;
+        }
+    }
+}
+
+@media (max-width:460px) {
+    .task {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100px;
+        .label {
+            height: 60%;
+            font-size: 1.2em;
+        }
+    }
+}

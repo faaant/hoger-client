@@ -1,0 +1,76 @@
+@import '/src/scss/variables';
+
+.pop-up {
+    min-height: 70px;
+    min-width: 300px;
+    background-color: $pop-up-background-color;
+}
+
+.error {
+    display: grid;
+    min-height: 70px;
+    grid-template-columns: 10px 50px minmax(240px, auto);
+    border: none;
+    .line {
+        background-color: $error-color;
+    }
+    
+    .img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            height: 45px;
+            width: 45px;
+        }
+    }
+    
+    .messages {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+        span {
+            font-size: 20px;
+        }
+    
+        .message {
+            color: $error-color;
+        }
+    }
+}
+
+.ok {
+    display: grid;
+    min-height: 70px;
+    grid-template-columns: 10px 50px minmax(240px, auto);
+    border: none;
+    .line {
+        background-color: $ok-color;
+    }
+    
+    .img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            height: 45px;
+            width: 45px;
+        }
+    }
+    
+    .messages {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+        span {
+            font-size: 20px;
+        }
+    
+        .message {
+            color: $ok-color;
+        }
+    }
+}
+

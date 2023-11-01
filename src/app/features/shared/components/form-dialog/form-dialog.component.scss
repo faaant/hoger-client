@@ -1,0 +1,30 @@
+@import "src/scss/variables";
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    background-color: $grid-odd-column-color;
+    height: 100%;
+}
+
+
+.controls {
+    .mat-mdc-button {
+        height: 40px;
+        width: 100px;
+        background-color: $grid-row-controls-bg-color;
+        color: $grid-row-controls-text-color;
+    }
+}
+
+.err-msg {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: red;
+    font-size: 12px;
+    height: 30px;
+    width: 100%;
+}
