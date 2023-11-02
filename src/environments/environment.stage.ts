@@ -1,4 +1,4 @@
-const apiUrl = 'https://hoger-server.adaptable.app/';
+const apiUrl = 'http://localhost:3600';
 
 export const environment = {
   production: true,
