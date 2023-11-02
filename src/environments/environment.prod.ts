@@ -1,4 +1,4 @@
-const apiUrl = 'https://hoger-server.adaptable.app/';
+const apiUrl = 'https://hoger-server.adaptable.app';
 
 export const environment = {
   production: true,
