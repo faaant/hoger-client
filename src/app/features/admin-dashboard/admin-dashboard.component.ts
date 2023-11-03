@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserAuthInfo } from '@core/models/auth';
+import { User } from '@core/models/auth';
 import { AuthService } from '@core/services/auth/auth.service';
 import { DASHBOARD_ITEMS } from '@features/admin-dashboard/constants/dashboard-items';
 
@@ -10,7 +10,7 @@ import { DASHBOARD_ITEMS } from '@features/admin-dashboard/constants/dashboard-i
 })
 export class AdminDashboardComponent {
   public data = DASHBOARD_ITEMS;
-  public userInfo!: UserAuthInfo;
+  public userInfo!: User;
 
   constructor(private authService: AuthService) {
     this.userInfo = this.authService.getUserInfo();

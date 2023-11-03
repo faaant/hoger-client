@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserAuthInfo } from '@core/models/auth';
+import { User } from '@core/models/auth';
 import { AuthService } from '@core/services/auth/auth.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { AuthService } from '@core/services/auth/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  public user!: UserAuthInfo;
+  public user!: User;
 
   constructor(private authService: AuthService) {
     this.user = this.authService.getUserInfo();

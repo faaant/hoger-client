@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageHandlingInterceptor } from '@core/interceptors/message-handling/message-handling.interceptor';
 import { RefreshSessionInterceptor } from '@core/interceptors/refresh-session/refresh-session.interceptor';
-import { WithCredentialsInterceptor } from '@core/interceptors/with-credentials/with-credentials.interceptor';
+import { JwtSessionInterceptor } from '@core/interceptors/jwt-session/jwt-session.interceptor';
 import { CoreModule } from '@core/core.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -31,7 +31,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: WithCredentialsInterceptor,
+      useClass: JwtSessionInterceptor,
       multi: true,
     },
   ],

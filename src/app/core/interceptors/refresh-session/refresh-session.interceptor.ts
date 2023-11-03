@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { catchError, Observable, switchMap, throwError } from 'rxjs';
+import { catchError, concatMap, Observable, switchMap, throwError } from 'rxjs';
 import { AuthService } from '@core/services/auth/auth.service';
 
 @Injectable()
@@ -17,6 +17,7 @@ export class RefreshSessionInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
+
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401 && !error.url?.includes('auth/refresh')) {

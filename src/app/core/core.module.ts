@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientXsrfModule } from '@angular/common/http';
 
 import { SharedModule } from '@features/shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
@@ -19,7 +18,6 @@ const COMPONENTS = [HeaderComponent, HomeComponent, NotFoundComponent];
     CommonModule,
     RouterModule,
     HttpClientModule,
-    HttpClientXsrfModule,
     MatDialogModule,
     MatButtonModule,
     SharedModule,

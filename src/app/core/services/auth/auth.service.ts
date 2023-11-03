@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User, UserAuthInfo } from '@core/models/auth';
+import { AuthTokens, User } from '@core/models/auth';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import { BaseService } from '@core/services/base-service/base.service';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { ID_KEY, JWT_KEY, JWT_REFRESH_KEY } from '@core/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -15,34 +16,42 @@ export class AuthService extends BaseService {
   }
 
   signIn(user: Partial<User>) {
-    this.httpClient.post(this.apiUrls.signIn, user).subscribe(() => {
+    this.httpClient.post<AuthTokens>(this.apiUrls.signIn, user).subscribe(({accessToken, refreshToken, idToken}) => {
+      localStorage.setItem(JWT_KEY, accessToken);
+      localStorage.setItem(JWT_REFRESH_KEY, refreshToken);
+      localStorage.setItem(ID_KEY, idToken);
+
       this.router.navigate(['/dashboard']);
     });
   }
 
   logout() {
-    this.httpClient.post(this.apiUrls.logout, null).subscribe(() => {
-      this.router.navigate(['/auth/sign-in']);
-    });
+    localStorage.removeItem(JWT_KEY);
+    localStorage.removeItem(JWT_REFRESH_KEY);
+    localStorage.removeItem(ID_KEY);
+    
+    this.router.navigate(['/auth/sign-in']);
   }
 
   refresh(): Observable<unknown> {
-    return this.httpClient.post(this.apiUrls.refresh, null);
-  }
-
-  getUserInfo(): UserAuthInfo {
-    try {
-      return jwt_decode(this.getCookie('ID-TOKEN'));
-    } catch {
-      return {};
-    }
-  }
-
-  private getCookie(name: string) {
-    const match = document.cookie.match(
-      new RegExp('(^| )' + name + '=([^;]+)')
+    return this.httpClient.post<AuthTokens>(this.apiUrls.refresh, null).pipe(
+      tap(({accessToken}) => {
+        localStorage.setItem(JWT_KEY, accessToken)
+      })
     );
-    if (match) return match[2];
-    throw ['Cant access cookie!'];
+  }
+
+  getUserInfo(): User {
+    try {
+      const idToken = localStorage.getItem(ID_KEY);
+
+      if (!idToken) {
+        throw "Identification token not exist!"
+      }
+
+      return jwt_decode(idToken);
+    } catch {
+      throw "Cant decode user information";
+    }
   }
 }
