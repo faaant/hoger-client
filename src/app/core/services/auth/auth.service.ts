@@ -47,7 +47,7 @@ export class AuthService extends BaseService {
     const idToken = localStorage.getItem(ID_KEY);
 
     if (!idToken) {
-      throw 'Identification token not exist!';
+      return;
     }
 
     try {
