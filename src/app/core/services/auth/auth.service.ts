@@ -43,17 +43,17 @@ export class AuthService extends BaseService {
     );
   }
 
-  getUserInfo(): User {
+  getUserInfo(): User | undefined {
+    const idToken = localStorage.getItem(ID_KEY);
+
+    if (!idToken) {
+      throw 'Identification token not exist!';
+    }
+
     try {
-      const idToken = localStorage.getItem(ID_KEY);
-
-      if (!idToken) {
-        throw 'Identification token not exist!';
-      }
-
       return jwt_decode(idToken);
     } catch {
-      throw 'Cant decode user information';
+      return;
     }
   }
 }

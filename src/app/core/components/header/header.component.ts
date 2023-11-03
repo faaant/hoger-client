@@ -8,7 +8,7 @@ import { AuthService } from '@core/services/auth/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  public user!: User;
+  public user?: User;
 
   constructor(private authService: AuthService) {
     this.user = this.authService.getUserInfo();

@@ -10,7 +10,7 @@ import { DASHBOARD_ITEMS } from '@features/admin-dashboard/constants/dashboard-i
 })
 export class AdminDashboardComponent {
   public data = DASHBOARD_ITEMS;
-  public userInfo!: User;
+  public userInfo?: User;
 
   constructor(private authService: AuthService) {
     this.userInfo = this.authService.getUserInfo();
