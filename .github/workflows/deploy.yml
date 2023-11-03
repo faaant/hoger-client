@@ -1,10 +1,10 @@
 name: Deployment
 
-on: push
-  # workflow_run:
-  #   workflows: ["Lint"]
-  #   types:
-  #     - completed
+on:
+  workflow_run:
+    workflows: ["Lint"]
+    types:
+      - completed
 
 jobs:
   deploy:
@@ -33,12 +33,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: faaant/hoger-client:latest
-
-      - name: Install Fly CLI
-        uses: superfly/flyctl-actions/setup-flyctl@master
-
-      - name: Deploy on Fly.io
-        
-        run: flyctl deploy --remote-only
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
