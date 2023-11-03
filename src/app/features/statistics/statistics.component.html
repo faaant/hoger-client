@@ -4,7 +4,10 @@
       <ng-container *ngTemplateOutlet="loader"></ng-container>
     </ng-container>
     <iframe
-      src="http://localhost:3200/d-solo/fvB7RrpVk/data?orgId=1&panelId=2"
+      [src]="
+        grafanaUrl + '/d-solo/fvB7RrpVk/data?orgId=1&panelId=2'
+          | safe : 'resourceUrl'
+      "
       frameborder="0"
       (load)="onLoad('balcony')"
       [ngClass]="{ loading: isLoadig['balcony'] }"
@@ -16,7 +19,10 @@
       <ng-container *ngTemplateOutlet="loader"></ng-container>
     </ng-container>
     <iframe
-      src="http://localhost:3200/d-solo/fvB7RrpVk/data?orgId=1&panelId=4"
+      [src]="
+        grafanaUrl + '/d-solo/fvB7RrpVk/data?orgId=1&panelId=4'
+          | safe : 'resourceUrl'
+      "
       frameborder="0"
       (load)="onLoad('capacity')"
       [ngClass]="{ loading: isLoadig['balcony'] }"

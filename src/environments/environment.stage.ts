@@ -3,6 +3,7 @@ const apiUrl = 'http://localhost:3600';
 export const environment = {
   production: true,
   baseUrl: 'http://localhost:4200/',
+  grafanaUrl: 'http://localhost:3200',
 
   apiUrls: {
     signIn: `${apiUrl}/auth/login`,

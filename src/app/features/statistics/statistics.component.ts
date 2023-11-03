@@ -3,6 +3,7 @@ import {
   ChartLoaderState,
   LoadingCharts,
 } from '@core/models/statistics/statistics.models';
+import { environment } from '@environment/environment';
 
 @Component({
   selector: 'app-statistics',
@@ -10,6 +11,8 @@ import {
   styleUrls: ['./statistics.component.scss'],
 })
 export class StatisticsComponent {
+  grafanaUrl = environment.grafanaUrl;
+
   isLoadig: ChartLoaderState = {
     balcony: true,
     capacity: true,

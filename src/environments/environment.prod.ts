@@ -3,6 +3,7 @@ const apiUrl = 'https://hoger-server.onrender.com';
 export const environment = {
   production: true,
   baseUrl: 'http://localhost:4200/',
+  grafanaUrl: 'https://hoger-grafana.onrender.com',
 
   apiUrls: {
     signIn: `${apiUrl}/auth/login`,

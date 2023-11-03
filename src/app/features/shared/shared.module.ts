@@ -13,6 +13,7 @@ import { GridRowComponent } from './components/grid/components/grid-row/grid-row
 import { ToStringArrayPipe } from './pipes/to-string-array.pipe';
 import { FilterComponent } from './components/grid/components/filter/filter.component';
 import { PopUpDialogComponent } from './components/pop-up-dialog/pop-up-dialog.component';
+import { SafePipe } from './pipes/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PopUpDialogComponent } from './components/pop-up-dialog/pop-up-dialog.c
     GridComponent,
     GridRowComponent,
     ToStringArrayPipe,
+    SafePipe,
     FilterComponent,
     PopUpDialogComponent,
   ],
@@ -32,6 +34,6 @@ import { PopUpDialogComponent } from './components/pop-up-dialog/pop-up-dialog.c
     MatSelectModule,
     MatProgressSpinnerModule,
   ],
-  exports: [FormDialogComponent, GridComponent, PopUpDialogComponent],
+  exports: [FormDialogComponent, GridComponent, PopUpDialogComponent, SafePipe],
 })
 export class SharedModule {}
