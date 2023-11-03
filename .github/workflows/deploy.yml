@@ -1,12 +1,6 @@
 name: Deployment
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
   workflow_run:
     workflows: ["Lint"]
     types:
@@ -17,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      -- name: Check out the repo
+      - name: Check out the repo
         uses: actions/checkout@v4
       
       - name: Log in to Docker Hub
