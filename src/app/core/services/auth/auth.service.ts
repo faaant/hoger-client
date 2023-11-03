@@ -16,27 +16,29 @@ export class AuthService extends BaseService {
   }
 
   signIn(user: Partial<User>) {
-    this.httpClient.post<AuthTokens>(this.apiUrls.signIn, user).subscribe(({accessToken, refreshToken, idToken}) => {
-      localStorage.setItem(JWT_KEY, accessToken);
-      localStorage.setItem(JWT_REFRESH_KEY, refreshToken);
-      localStorage.setItem(ID_KEY, idToken);
+    this.httpClient
+      .post<AuthTokens>(this.apiUrls.signIn, user)
+      .subscribe(({ accessToken, refreshToken, idToken }) => {
+        localStorage.setItem(JWT_KEY, accessToken);
+        localStorage.setItem(JWT_REFRESH_KEY, refreshToken);
+        localStorage.setItem(ID_KEY, idToken);
 
-      this.router.navigate(['/dashboard']);
-    });
+        this.router.navigate(['/dashboard']);
+      });
   }
 
   logout() {
     localStorage.removeItem(JWT_KEY);
     localStorage.removeItem(JWT_REFRESH_KEY);
     localStorage.removeItem(ID_KEY);
-    
+
     this.router.navigate(['/auth/sign-in']);
   }
 
   refresh(): Observable<unknown> {
     return this.httpClient.post<AuthTokens>(this.apiUrls.refresh, null).pipe(
-      tap(({accessToken}) => {
-        localStorage.setItem(JWT_KEY, accessToken)
+      tap(({ accessToken }) => {
+        localStorage.setItem(JWT_KEY, accessToken);
       })
     );
   }
@@ -46,12 +48,12 @@ export class AuthService extends BaseService {
       const idToken = localStorage.getItem(ID_KEY);
 
       if (!idToken) {
-        throw "Identification token not exist!"
+        throw 'Identification token not exist!';
       }
 
       return jwt_decode(idToken);
     } catch {
-      throw "Cant decode user information";
+      throw 'Cant decode user information';
     }
   }
 }
