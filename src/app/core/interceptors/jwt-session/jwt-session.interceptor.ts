@@ -14,7 +14,6 @@ export class JwtSessionInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log(new URL(req.url).pathname);
     let token = localStorage.getItem(JWT_KEY);
 
     if (new URL(req.url).pathname.includes('/auth/refresh')) {

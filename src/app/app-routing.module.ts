@@ -17,6 +17,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/dashboard',
+      },
+      {
         path: 'room-managment',
         loadChildren: () =>
           import('@features/room-managment/room-managment.module').then(
